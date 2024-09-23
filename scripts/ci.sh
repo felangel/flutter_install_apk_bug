@@ -8,9 +8,6 @@ cd "$TEMP_DIR"
 flutter create e2e_test --empty --platforms android
 cd e2e_test
 
-# Replace the contents of "lib/main.dart" with a single print statement.
-echo "void main() { print('hello world'); }" >lib/main.dart
-
 # Create a new release on Android
 flutter build appbundle --release
 
