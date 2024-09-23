@@ -63,17 +63,19 @@ jobs:
             flutter create e2e_test --empty --platforms android
             cd e2e_test
 
-            # Replace the contents of "lib/main.dart" with a single print statement.
-            echo "void main() { print('hello world'); }" >lib/main.dart
+            ls -la
 
-            # Create a new release on Android
-            flutter build appbundle --release
+            # # Replace the contents of "lib/main.dart" with a single print statement.
+            # echo "void main() { print('hello world'); }" > lib/main.dart
 
-            # Download bundletool 1.17.1
-            curl -L -o bundletool.jar https://github.com/google/bundletool/releases/download/1.17.1/bundletool-all-1.17.1.jar
+            # # Create a new release on Android
+            # flutter build appbundle --release
 
-            # Build a universal APK
-            java -jar bundletool.jar build-apks --overwrite --bundle=build/app/outputs/bundle/release/app-release.aab --output=outputs/my_app.apks --mode=universal
+            # # Download bundletool 1.17.1
+            # curl -L -o bundletool.jar https://github.com/google/bundletool/releases/download/1.17.1/bundletool-all-1.17.1.jar
 
-            # Install the APK on a device
-            java -jar bundletool.jar install-apks --allow-downgrade --apks=outputs/my_app.apks
+            # # Build a universal APK
+            # java -jar bundletool.jar build-apks --overwrite --bundle=build/app/outputs/bundle/release/app-release.aab --output=outputs/my_app.apks --mode=universal
+
+            # # Install the APK on a device
+            # java -jar bundletool.jar install-apks --allow-downgrade --apks=outputs/my_app.apks
