@@ -55,6 +55,17 @@ jobs:
           api-level: 29
           arch: x86_64
           script: |
+            # Create a temporary directory            
+            TEMP_DIR=$(mktemp -d -t 'workspace-XXXXX')
+            cd "$TEMP_DIR"
+
+            # Create a new empty flutter project
+            flutter create e2e_test --empty --platforms android
+            cd e2e_test
+
+            # Replace the contents of "lib/main.dart" with a single print statement.
+            echo "void main() { print('hello world'); }" >lib/main.dart
+
             # Create a new release on Android
             flutter build appbundle --release
 
